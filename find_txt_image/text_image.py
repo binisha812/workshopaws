@@ -14,3 +14,11 @@ response = rekognition_client.detect_text(
     }
 )
 print(json.dumps(response, indent=4, sort_keys=True))
+
+
+texts = []
+for text in response["TextDetections"]:
+    if(text["Type"]) == "WORD":
+        texts.append(text["DetectedText"])
+
+print(" ".join(texts))
